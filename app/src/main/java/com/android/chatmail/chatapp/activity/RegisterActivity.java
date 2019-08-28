@@ -3,6 +3,7 @@ package com.android.chatmail.chatapp.activity;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -74,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                    Log.e("ERROR LOGIN", task.getException().toString());
                 }
             }
         });
