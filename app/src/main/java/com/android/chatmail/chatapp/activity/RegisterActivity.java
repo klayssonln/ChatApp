@@ -3,6 +3,7 @@ package com.android.chatmail.chatapp.activity;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,7 +49,12 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(newName.isEmpty() || newEmail.isEmpty() || newPassword.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Inform all fields.", Toast.LENGTH_SHORT).show();
-                } else {
+                } else if(newPassword.length()<6) {
+                    Toast.makeText(getApplicationContext(), "Password should be at least 6 characters", Toast.LENGTH_SHORT).show();
+                } else if(!Patterns.EMAIL_ADDRESS.matcher(newEmail).matches()){
+                    Toast.makeText(getApplicationContext(), "The email address is badly formatted.", Toast.LENGTH_SHORT).show();
+                }
+                else {
                     user.setName(newName);
                     user.setEmail(newEmail);
                     user.setPassword(newPassword);
